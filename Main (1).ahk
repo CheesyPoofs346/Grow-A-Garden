@@ -2974,24 +2974,12 @@ CraftingToolPath:
 
     ; — navigate and craft —
     sendKeybind(SavedKeybind)
-    Sleep, 50
+        Sleep, 200
     sendKeybind(SavedKeybind)
-    Sleep, 50
-
-    if (UINavigationFix)
-        uiUniversal("add", 0, 1)
-    else
-        uiUniversal("11114", 0, 1, 0, 30, 150)
         Sleep, 200
 
-        uiUniversal("44444544454440440")
-        Sleep, 200
-
-    if (UINavigationFix)
-        uiUniversal("add", 0, 1)
-    else
-        uiUniversal("0440", 0, 1)
-    Sleep, 1000
+        uiUniversal("1115144445444544540440")
+        Sleep, 1000
 
     sendKeybind(SavedKeybind)
     Sleep, 300
