@@ -1217,6 +1217,9 @@ ShowGui:
         Gui, Add, Checkbox, % "x280 y" y " vCraftItem2" A_Index " gHandleSelectAll " . (c2Val ? "Checked" : ""), % craftItems2[A_Index]
     }
 
+    ; reminder to put your Bee egg in slot 9
+    Gui, Add, Text, % "x280 y" (y + 25) " w200 h20 cYellow", Put Bee Egg in slot 8
+
     Gui, Tab, 6
     Gui, Font, s9 cD41551 Bold, Segoe UI
     Gui, Add, GroupBox, x23 y50 w475 h340 cD41551, Cosmetic Shop
@@ -1279,7 +1282,8 @@ ShowGui:
     startCheck := EnableStartScreenshots  ? " Checked"    : ""
     Gui, Add, Checkbox, % "x225 y275 vEnableStartScreenshots gUpdateSettingColor " startColor startCheck, On-Start Screenshots
 
-
+    Gui, Add, Text, x225 y300 cYellow, Screenshots have had problems sending to  ; Changed from y75
+    Gui, Add, Text, x225 y320 cYellow,  Discord. Were working on it  ; Changed from y75
 
     Gui, Font, s8 cD3D3D3 Bold, Segoe UI
     Gui, Add, Text, x50 y90, Webhook URL:
@@ -2978,52 +2982,18 @@ CraftingToolPath:
     sendKeybind(SavedKeybind)
         Sleep, 200
 
-        uiUniversal("1115144445444544540440")
+        uiUniversal("111514444544454445440440")
         Sleep, 1000
 
-    sendKeybind(SavedKeybind)
-    Sleep, 300
-    sendKeybind(SavedKeybind)
-    Sleep, 1000
-    sendKeybind(SavedKeybind)
-    Sleep, 300
+    Send, 8
+        Sleep, 200
 
-    ; open your backpack & search for the item
-    if (UINavigationFix)
-        uiUniversal("Add")
-    else
-        uiUniversal("10")
-    Sleep, 1000
-
-    if (UINavigationFix)
-        uiUniversal("Add")
-    else
-        uiUniversal("15151545450")
-    Sleep, 300
-
-    Send, {Backspace 20}
-    Sleep, 1000
-
-    typeString("Bee Egg")
-    Sleep, 150
-
-    sendKeybind(SavedKeybind)
-    Sleep, 150
-
-    if (UINavigationFix)
-        uiUniversal("ADD HERE", 0, 1)
-    else
-        uiUniversal("151515454522115505444454445444454444551115111505")
-    Sleep, 100
-
-    ; press slot 7, then interact 6×
-    Send, 7
     Sleep, 100
     Loop, 6 {
         Send, {e}
         Sleep, 200
     }
-    Send, 7
+    Send, 8
     Sleep, 200
 
     ; dismiss any Robux prompt
@@ -3032,9 +3002,6 @@ CraftingToolPath:
     ; — done crafting, shut shop —
     SendDiscordMessage(webhookURL, "Shop Closed.")
     Sleep, 1000
-
-    uiUniversal("151515454522115544445444544445444455111511150525222252333333353333333353333333333533333333335333311545422110")
-    Sleep, 100
 
     ; — final webhook notice —
     SendDiscordMessage(webhookURL, "**[Crafting Anti Bee Egg]**")
